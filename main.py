@@ -207,9 +207,6 @@ def main():
 
     df_clean.to_csv("complaints_clean_with_topics.csv", index=False)
     print("\n'complaints_clean_with_topics.csv' gespeichert.")
-    df_raw.to_csv("complaints_raw_backup.csv", index=False)
-    print("'complaints_raw_backup.csv' gespeichert.")
-    print("\nFertig! Erzeugte Grafiken: lda_topic0_topwords.png | cluster_sizes.png | top_products.png")
 
 if __name__ == "__main__":
     main()
