@@ -1,0 +1,45 @@
+# Projekt: Data Analysis - Erarbeitungsphase
+
+## Datensatz
+
+Verwendet wird der offene Kaggle-Datensatz:
+
+> Consumer Complaint Finance  
+> https://www.kaggle.com/datasets/meetnagadia/consumer-complaint-finance
+
+
+## Installation
+
+Installation der benötigten Pakete in einer neuen Umgebung:
+
+bash
+pip install -r requirements.txt
+
+
+## Nutzung
+
+1. complaints.csv von Kaggle herunterladen und im Projektordner speichern.  
+2. In main.py den Pfad in der Variable "CSV_PATH" anpassen.
+3. Skript ausführen:
+
+bash
+python main.py
+
+
+Während der Ausführung werden:
+
+- bereinigte Daten (complaints_clean_subset.csv, complaints_clean_with_topics.csv) erzeugt,
+- ein LDA-Modell mit 8 Topics trainiert,
+- K-Means-Clustering (8 Cluster) auf TF-IDF durchgeführt,
+- Beispielbeschwerden pro Cluster ausgegeben,
+- mehrere Grafiken gespeichert:
+  - top_products.png (Top-Finanzprodukte nach Beschwerdeanzahl)
+  - lda_topic0_topwords.png (Top-Wörter eines Beispiel-Topics)
+  - cluster_sizes.png (Verteilung der Clustergrößen)
+
+
+## Ergebnisse 
+
+- Die meisten Beschwerden betreffen Themen rund um Credit Reporting und damit verbundene Probleme in Bonitätsauskünften.
+- LDA-Topics und K-Means-Cluster zeigen wiederkehrende Muster wie Identitätsdiebstahl, fehlerhafte Einträge, Inkasso-Fälle und Kredit-/Bankprobleme.
+- Die Visualisierungen geben einen schnellen Überblick über dominante Produkte und thematische Schwerpunkte.
