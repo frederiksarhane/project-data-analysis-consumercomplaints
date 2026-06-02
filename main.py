@@ -15,8 +15,13 @@ sns.set(style="whitegrid")
 CSV_PATH = r"C:\Users\frede\DataAnalysis\complaints\complaints.csv"  # !!!!!
 
 def load_raw_data(path: str) -> pd.DataFrame:
-    df = pd.read_csv(path, low_memory=False)
-    return df
+    for enc in ("utf-8", "latin-1", "cp1252"):
+        try:
+            df = pd.read_csv(path, low_memory=False, encoding=enc)
+            return df
+        except UnicodeDecodeError:
+            continue
+    raise ValueError(f"Konnte '{path}' mit keinem der Encodings lesen.")
 
 def filter_and_sample(df: pd.DataFrame, max_rows: Optional[int] = 30000) -> pd.DataFrame:
     text_col = "Consumer complaint narrative"
@@ -207,6 +212,7 @@ def main():
 
     df_clean.to_csv("complaints_clean_with_topics.csv", index=False)
     print("\n'complaints_clean_with_topics.csv' gespeichert.")
+    print("\nFertig! Grafiken erzeugt!")
 
 if __name__ == "__main__":
     main()
